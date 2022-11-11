@@ -2,8 +2,11 @@ package br.edu.fateczl.SpringRest.model.entity;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,7 +16,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name="BME280")
 
@@ -22,13 +24,17 @@ public class BME280 {
 	@Column(name = "dateAndTime", nullable = false)
 	private LocalDateTime dateAndtime;
 	
-	@Column(name = "pressure", nullable = false)
+	@Column(name = "pressure", nullable = true)
 	private Double pressure;
 	
-	@Column(name = "humidity", nullable = false)
+	@Column(name = "humidity", nullable = true)
 	private Double humidity;
 	
-	@Column(name = "temperature",nullable = false)
+	@Column(name = "temperature",nullable = true)
 	private Double temperature;
 	
+	@Override
+	public String toString() {
+		return dateAndtime + " | " + pressure + " | " + humidity  + " | " + temperature;
+	}
 }
