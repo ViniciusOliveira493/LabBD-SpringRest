@@ -31,9 +31,6 @@ public class SensorController implements ISensorController{
 	@GetMapping("/sensor")
 	public List<BME280DTO> findAll(){
 		List<BME280> list = rep.findAll();
-		for(BME280 s:list) {
-			System.out.println(s);
-		}
 		return BME280DTO.parseToBME280DTO(list);
 	}
 

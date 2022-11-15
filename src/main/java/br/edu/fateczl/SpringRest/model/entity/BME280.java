@@ -1,6 +1,5 @@
 package br.edu.fateczl.SpringRest.model.entity;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -8,8 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "BME280")
@@ -67,6 +64,7 @@ public class BME280 {
 	}
 	
 	public static LocalDateTime parseDate(String dateAndtime) {
+		dateAndtime = dateAndtime.replaceAll("T", " ");
 		DateTimeFormatter frm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSS");
 		return LocalDateTime.parse(dateAndtime,frm);
 	}
